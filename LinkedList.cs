@@ -2,7 +2,7 @@
 
 namespace DataStructure
 {
-    class LinkedList
+    public class LinkedList
     {
         public Node head;
         public void InsertLast(int new_data)
@@ -111,6 +111,31 @@ namespace DataStructure
                     if (temp.data == input)
                     {
                         Console.WriteLine("The element is present");
+                        flag = true;
+                        break;
+                    }
+                    temp = temp.next;
+                }
+                if (!flag)
+                    Console.WriteLine("The Element is Absent");
+            }
+            return flag;
+        }
+        public bool InsertAfter(int data, int after)
+        {
+            bool flag = false;
+            if (head == null)
+                Console.WriteLine("List is Empty");
+            else
+            {
+                Node temp = head;
+                while (temp != null)
+                {
+                    if (temp.data == after)
+                    {
+                        Node newNode = new Node(data);
+                        newNode.next = temp.next;
+                        temp.next = newNode;
                         flag = true;
                         break;
                     }
