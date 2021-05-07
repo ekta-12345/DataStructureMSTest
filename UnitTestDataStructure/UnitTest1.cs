@@ -20,5 +20,14 @@ namespace UnitTestDataStructure
             bool flagReturned = list.Search(data);
             Assert.AreEqual(flag, flagReturned);
         }
+        [TestMethod] /*TC9*/
+        [DataRow(70)]
+        public void DeletingSpecificElementFromList(int data)
+        {
+            list.DeleteElement(data);
+            int expected = 0;
+            int actual = list.Search(70);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
