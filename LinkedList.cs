@@ -37,38 +37,11 @@ namespace DataStructure
             Console.WriteLine("inserted into front" + new_node);
         }
 
-
-
-        //internal Node InsertAtParticularPosition(int position, int data)
-        //{
-        //    if (position < 1)
-        //        Console.WriteLine("Invalid position");
-        //    if (position == 1)
-        //    {
-        //        var newNode = new Node(data);
-        //        newNode.next = this.head;
-        //        head = newNode;
-        //    }
-        //    else
-        //    {
-        //        while (position-- != 0)
-        //        {
-        //            if (position == 1)
-        //            {
-        //                Node node = new Node(data);
-        //                node.next = this.head.next;
-        //                head.next = node;
-        //                break;
-        //            }
-        //            head = head.next;
-        //        }
-        //        if (position != 1)
-        //            Console.WriteLine("Position out of range");
-        //    }
-        //    return head;
-        //}
-
-
+        internal void Add(int v)
+        {
+            throw new NotImplementedException();
+        }
+                
         internal Node DeleteFirstNode()
         {
             if (this.head == null)
@@ -146,6 +119,70 @@ namespace DataStructure
             }
             return flag;
         }
+
+
+        public void DeleteElement(int data)
+        {
+            bool flag = false;
+            int count = 0;
+
+            if (head == null)
+                Console.WriteLine("List is Empty");
+            else
+            {
+                Node temp = head;
+                Node previousNode = null;
+                while (temp != null)
+                {
+
+                    if (temp.data == data)
+                    {
+                        if (count == 1)
+                        {
+                            head = temp.next;
+                        }
+                        previousNode.next = temp.next;
+
+                        flag = true;
+
+                        break;
+                    }
+                    previousNode = temp;
+                    temp = temp.next;
+
+                }
+                if (!flag)
+                {
+                    Console.WriteLine($"{data} Element Not Found in Linked List");
+                }
+                else
+                {
+                    Console.WriteLine($"Successfully Delete Element {data}");
+
+                }
+            }
+
+
+            //return flag; 
+        }
+
+        public int Count()
+        {
+            int count = 0;
+
+            Node temp = head;
+            while (temp != null)
+            {
+                temp = temp.next;
+                count++;
+            }
+            Console.WriteLine($"Linked List Count is {count}");
+
+            return count;
+
+        }
+
+
         internal void Display()
         {
             Node temp = this.head;
